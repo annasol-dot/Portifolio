@@ -1,0 +1,461 @@
+/* ==========================================================
+   ÍNDICE (mesma ordem do HTML)
+   1. Variáveis de cor (tema escuro e claro)
+   2. Base (body, títulos, seções, botões)
+   3. Topo e menu
+   4. Início (terminal, cargo, botões)
+   5. Sobre mim
+   6. Habilidades
+   7. Projetos
+   8. Contato
+   9. Rodapé
+   ========================================================== */
+
+
+/* ===== 1. VARIÁVEIS DE COR ===== */
+:root,
+[data-bs-theme="dark"] {
+  --bg: #0b0a10;
+  --surface: #14121c;
+  --border: #2a2638;
+  --text: #ece8f5;
+  --muted: #a59fb8;
+  --accent: #a78bfa;
+  --accent-soft: #c4b5fd;
+  --btn-bg: #a78bfa;
+  --btn-bg-hover: #c4b5fd;
+  --btn-text: #000000;
+  --shadow: 0 8px 24px rgba(0, 0, 0, .35);
+  color-scheme: dark;
+}
+
+[data-bs-theme="light"] {
+  --bg: #f7f5fb;
+  --surface: #ffffff;
+  --border: #c3b1ed;
+  --text: #1e1b2e;
+  --muted: #5f5878;
+  --accent: #45217f;
+  --accent-soft: #240f46;
+  --btn-bg: #270c56;
+  --btn-bg-hover: #270b54;
+  --btn-text: #ffffff;
+  --shadow: 0 8px 24px rgba(60, 40, 120, .12);
+  color-scheme: light;
+}
+
+
+/* ===== 2. BASE ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  transition: background-color .25s ease, color .25s ease;
+}
+
+h1, h2, h3, .navbar-brand, .btn, .terminal {
+  font-family: "JetBrains Mono", monospace;
+}
+
+main {
+  padding: 0 20px;
+}
+
+/* Todas as seções: mesma largura máxima, centralizadas e com o mesmo espaço */
+section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 50px 0;
+  scroll-margin-top: 20px;
+}
+
+/* Linha fina entre as seções */
+section + section {
+  border-top: 1px solid var(--border);
+}
+
+button {
+  background-color: #3e4d58;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/* ===== 3. TOPO E MENU ===== */
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px 20px;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.menu a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.logo {
+  color: var(--text);
+  text-decoration: none;   /* tira o sublinhado */
+  font-family: "JetBrains Mono", monospace;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.logo:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: var(--accent);
+}
+
+
+/* ===== 4. INÍCIO ===== */
+#inicio {
+  text-align: left;   /* texto alinhado à esquerda */
+}
+
+.terminal {
+  max-width: 600px;
+  padding: 20px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.terminal p {
+  margin: 0;
+}
+
+.cargo {
+  color: var(--accent-soft);
+  font-size: 20px;
+}
+
+/* Cursor piscando depois do cargo */
+.cursor {
+  animation: piscar 1s steps(1) infinite;
+}
+
+@keyframes piscar {
+  50% { opacity: 0; }
+}
+
+.bio {
+  max-width: 600px;
+  margin: 25px 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+/* Botões "Ver projetos" e "Entrar em contato" */
+.btn-roxo,
+.btn-contorno {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 10px;
+  margin: 4px 8px 4px 0;
+  text-decoration: none;
+}
+
+.btn-roxo:hover,
+.btn-contorno:hover {
+  text-decoration: none;
+}
+
+.btn-roxo {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  font-weight: bold;
+}
+
+.btn-roxo:hover {
+  background-color: var(--btn-bg-hover);
+  color: var(--btn-text);
+}
+
+.btn-contorno {
+  border: 1px solid var(--accent);
+  color: var(--text);
+}
+
+.btn-contorno:hover {
+  background-color: var(--surface);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+
+/* ===== 5. SOBRE MIM ===== */
+/* A borda fica em volta da foto + texto */
+.sobre-conteudo {
+  display: flex;
+  flex-direction: column;   /* celular: foto em cima, texto embaixo */
+  align-items: center;
+  gap: 24px;
+  padding: 24px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+/* TAMANHO DA FOTO */
+.foto-sobre {
+  width: 100%;
+  max-width: 340px;         /* largura máxima */
+  height: 420px;            /* altura */
+  object-fit: cover;        /* corta a foto sem esticar */
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.sobre-texto p {
+  margin: 0 0 12px 0;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.sobre-lista {
+  list-style: none;
+  padding: 16px 0 0 0;
+  margin: 16px 0 0 0;
+  border-top: 1px solid var(--border);   /* linha separando o resumo */
+  display: grid;
+  gap: 6px;
+}
+
+.sobre-lista li {
+  color: var(--muted);   /* use a mesma cor que você colocou nos parágrafos */
+}
+
+.sobre-lista strong {
+  color: var(--accent);  /* o rótulo fica em roxo */
+}
+
+/* Computador: foto à esquerda, texto à direita */
+@media (min-width: 800px) {
+  .sobre-conteudo {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .foto-sobre {
+    flex-shrink: 0;         /* a foto não encolhe quando o texto é grande */
+  }
+
+  .sobre-texto {
+    flex: 1;                /* o texto ocupa o resto do espaço */
+  }
+}
+
+
+/* ===== 6. HABILIDADES ===== */
+.grupo-habilidades {
+  margin-bottom: 20px;
+}
+
+.grupo-habilidades h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+.tag {
+  display: inline-block;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 20px;
+  padding: 4px 14px;
+  margin: 4px 6px 4px 0;
+  font-size: 0.9rem;
+}
+
+.tag-aprendendo {
+  border-style: dashed;
+}
+
+
+/* ===== 7. PROJETOS ===== */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;   /* celular: um embaixo do outro */
+  gap: 20px;
+}
+
+.card-projeto {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  color: var(--text);
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.card-projeto:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.card-projeto img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+
+.card-corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  flex: 1;
+}
+
+.card-corpo h3,
+.card-corpo p {
+  margin: 0;
+}
+
+.card-corpo p {
+  flex: 1;
+  color: var(--muted);
+}
+
+.card-corpo small {
+  color: var(--muted);
+}
+
+.card-corpo .ver {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* Computador: 3 cards lado a lado */
+@media (min-width: 800px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+/* ===== 8. CONTATO ===== */
+.contato-grid {
+  display: grid;
+  grid-template-columns: 1fr;   /* celular: uma coluna */
+  gap: 30px;
+}
+
+.contato-info h3 {
+  margin-top: 0;
+}
+
+.contato-link {
+  display: inline-block;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 20px;
+  padding: 6px 18px;
+  margin: 4px 8px 4px 0;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.contato-link:hover {
+  background-color: var(--accent);
+  color: var(--btn-text);
+}
+
+/* O formulário vira um "card" */
+.formulario {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background-color: var(--surface);
+}
+
+.formulario label {
+  display: block;
+  margin: 12px 0 4px 0;
+  font-weight: bold;
+}
+
+.formulario input,
+.formulario textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.formulario textarea {
+  resize: vertical;   /* só permite aumentar na altura */
+}
+
+.formulario input:focus,
+.formulario textarea:focus {
+  outline: none;
+  border-color: var(--accent);   /* borda roxa ao clicar no campo */
+}
+
+.botao-enviar {
+  margin-top: 16px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  font-size: 1rem;
+}
+
+.botao-enviar:hover {
+  background-color: var(--btn-bg-hover);
+}
+
+/* Computador: informações à esquerda, formulário à direita */
+@media (min-width: 800px) {
+  .contato-grid {
+    grid-template-columns: 1fr 1.3fr;
+  }
+}
+
+
+/* ===== 9. RODAPÉ ===== */
+footer {
+  padding: 20px 0;
+  text-align: center;
+  background-color: var(--surface);
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+footer p {
+  margin: 0;
+}
